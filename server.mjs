@@ -72,12 +72,15 @@ server.post("/register", (req, res) => {
 });
 
 // Protect all /groups routes
-server.use("/groups", verifyToken);
+server.use("/users", verifyToken);
 
 // Use JSON Server's router
 server.use(router);
+server.use("/forms", verifyToken);       // secure form routes
+server.use("/responses", verifyToken); 
 
 // Start the server
-server.listen(3000, () => {
-  console.log("JSON Server is running on http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`JSON Server is running on http://localhost:${PORT}`);
 });

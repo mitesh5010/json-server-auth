@@ -18,7 +18,7 @@ A simple setup for using **JSON Server** with authentication, enabling basic API
 
 1. **Clone the repository and start the project**:
    ```bash
-   git clone https://github.com/Avi-chauhan/json-server-auth.git
+   git clone https://github.com/mitesh5010/json-server-auth.git
    cd json-server-auth
    npm install
    npm start

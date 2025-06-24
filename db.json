@@ -1,18 +1,13 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Test User",
-            "email": "test@example.com",
-            "password": "password123"
-        }
-    ],
-    "groups": [
-        {
-            "id": 1,
-            "name": "Trip to Paris",
-            "participants": [],
-            "expenses": []
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Test User",
+      "email": "admin@example.com",
+      "password": "1234567890",
+      "role": "admin"
+    }
+  ],
+  "forms": [],
+  "responses": []
 }
