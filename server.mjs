@@ -76,8 +76,8 @@ server.use("/users", verifyToken);
 
 // Use JSON Server's router
 server.use(router);
-server.use("/forms", verifyToken);       // secure form routes
-server.use("/responses", verifyToken); 
+server.use("/600/forms", verifyToken);       // secure form routes
+server.use("/600/responses", verifyToken); 
 
 // Start the server
 const PORT = process.env.PORT || 3000;
