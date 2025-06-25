@@ -1,4 +1,5 @@
-import { create, router as _router, defaults } from 'json-server';
+import pkg from 'json-server';
+const { create, router: _router, defaults } = pkg;
 import jwt from 'jsonwebtoken';
 import bodyParser from 'body-parser';
 import auth from 'json-server-auth';
@@ -12,7 +13,7 @@ const router = _router('db.json');
 const middlewares = defaults();
 
 // Security configuration
-const SECRET_KEY = "your_secret_key_should_be_long_and_complex";
+const SECRET_KEY = process.env.SECRET_KEY || "fallback_key";
 const expiresIn = "1h";
 
 // Helper functions
