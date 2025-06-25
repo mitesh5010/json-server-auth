@@ -1,6 +1,9 @@
 import jsonServer from "json-server";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
+import auth from 'json-server-auth';
+import fs from 'fs';
+
 
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
@@ -8,7 +11,6 @@ const middlewares = jsonServer.defaults();
 
 const SECRET_KEY = "your_secret_key";
 const expiresIn = "1h";
-const fs = require('fs');
 
 function createToken(payload) {
   return jwt.sign(payload, SECRET_KEY, { expiresIn });
@@ -31,8 +33,11 @@ function verifyToken(req, res, next) {
 setInterval(() => {
   fs.writeFileSync('db.json', JSON.stringify(router.db.getState(), null, 2));
 }, 5000);
+server.db = router.db;
 server.use(bodyParser.json());
 server.use(middlewares);
+server.use(auth);
+server.listen(3000);
 
 // Authentication endpoints
 server.post("/login", (req, res) => {
