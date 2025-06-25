@@ -8,6 +8,7 @@ const middlewares = jsonServer.defaults();
 
 const SECRET_KEY = "your_secret_key";
 const expiresIn = "1h";
+const fs = require('fs');
 
 function createToken(payload) {
   return jwt.sign(payload, SECRET_KEY, { expiresIn });
@@ -27,7 +28,9 @@ function verifyToken(req, res, next) {
     res.status(401).json({ message: "Access denied: Invalid token." });
   }
 }
-
+setInterval(() => {
+  fs.writeFileSync('db.json', JSON.stringify(router.db.getState(), null, 2));
+}, 5000);
 server.use(bodyParser.json());
 server.use(middlewares);
 
